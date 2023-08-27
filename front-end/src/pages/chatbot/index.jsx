@@ -1,5 +1,6 @@
 /* eslint-disable react/jsx-max-depth */
 import React from 'react';
+import Navbar from '../components/Navbar';
 
 export default function Chatbot() {
   return (
@@ -7,36 +8,7 @@ export default function Chatbot() {
 
       <div id="app">
 
-        <div id="header" className="bg-dark">
-          <div>
-            <button
-              id="back-button"
-              className="text-light btn-transparent btn-icon fas fa-arrow-left"
-            />
-          </div>
-          <div className="text-light align-center">
-            <h2>Optus</h2>
-          </div>
-          <div>
-            <button
-              id="nav-icon"
-              className="text-light btn-transparent btn-icon"
-            />
-            <nav id="nav-container" style={ { display: 'none' } }>
-              <ul className="nav">
-                <li id="theme" className="nav-link">
-                  <span className="" />
-                  Chats
-                </li>
-                <hr />
-                <li id="sign-out" className="nav-link">
-                  <span className="" />
-                  Sign out
-                </li>
-              </ul>
-            </nav>
-          </div>
-        </div>
+        <Navbar />
 
         <div id="message-board" />
         <div id="form" className="bg-light">

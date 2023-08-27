@@ -45,12 +45,12 @@ hr {
 /*** NAV ***/
 
 nav#nav-container {
-	background: #f0f0f0;
+	background: #0085ff;
 	padding: 15px;
 	position: absolute;
 	z-index: 1;
 	right: 0;
-	top: 0;
+	top: 50px;
 	box-sizing: border-box;
 }
 
@@ -91,6 +91,7 @@ button,
 	font-size: 1.5rem;
 	width: 100%;
 }
+
 
 /**************************/
 
