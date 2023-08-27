@@ -1,10 +1,12 @@
 html {
-	font-family: Arial, sans-serif;
+	font-family: sans-serif;
 	font-size: 16px;
 }
 
 body {
 	min-height: 100vh;
+	background: #ffffff;
+	
 }
 
 h2,
@@ -25,7 +27,7 @@ hr {
 }
 
 .bg-dark {
-	background: #0085FF;
+	background: #0085ff;
 }
 
 .bg-light {
@@ -89,6 +91,13 @@ button,
 	font-size: 1.5rem;
 	width: 100%;
 }
+
+/**************************/
+
+/*** Display fake phone ***/
+
+/**************************/
+
 #phone-wrapper {
 	margin: 50px auto;
 	background: url("https://cdn.pixabay.com/photo/2017/06/17/10/39/cell-phone-2411808_960_720.png") 0 0;
@@ -113,6 +122,7 @@ button,
 }
 
 
+
 /********************/
 
 /*** Main chat UI ***/
@@ -128,6 +138,34 @@ button,
 
 #header {
 	padding: 6px;
+}
+
+
+#form {
+	padding: 6px;
+	/*min-height: 40px;*/
+	grid-template-rows: auto 1fr;
+}
+
+#message {
+	padding: 5px;
+	font-size: 1rem;
+	min-height: 25px;
+	max-height: 25vh;
+	overflow: auto;
+	background: rgba(0, 0, 0, 0.05);
+	color: rgba(0, 0, 0, 0.29);
+	font-style: italic;
+	outline: none;
+	resize: none;
+}
+
+#form.focus {
+	background: rgba(255, 152, 0, 0.1);
+}
+
+#message.focus {
+	background: rgba(255, 255, 255, 0.5);
 }
 
 /* Custom Scrollbar */
@@ -150,18 +188,3 @@ button,
 	background: #b30000;
 }
 
-/***************/
-
-/*** Credits ***/
-
-/***************/
-
-.credits {
-	text-align: center;
-	font-size: small;
-	color: #b2b2b2;
-}
-
-.credits a {
-	color: inherit;
-}
