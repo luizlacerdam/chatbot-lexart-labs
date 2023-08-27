@@ -1,42 +1,167 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+html {
+	font-family: Arial, sans-serif;
+	font-size: 16px;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+body {
+	min-height: 100vh;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+h2,
+h3 {
+	margin: 0;
+	padding: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+h1 {}
+
+h2 {
+	font-size: 1rem;
+	font-weight: 400;
 }
 
-.card {
-  padding: 2em;
+hr {
+	margin: 15px 0;
 }
 
-.read-the-docs {
-  color: #888;
+.bg-dark {
+	background: #0085FF;
+}
+
+.bg-light {
+	background: hsla(231, 10%, 90%, 0.8);
+}
+
+.text-light {
+	color: #f0f0f0;
+}
+
+.align-center {
+	text-align: center;
+}
+
+/*** NAV ***/
+
+nav#nav-container {
+	background: #f0f0f0;
+	padding: 15px;
+	position: absolute;
+	z-index: 1;
+	right: 0;
+	top: 0;
+	box-sizing: border-box;
+}
+
+ul.nav {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.nav-link {
+	padding: 2px 0;
+	margin: 8px 0;
+	font-size: .9rem;
+	position: relative;
+	padding-left: 40px;
+}
+
+.nav-link > span {
+	margin-right: 10px;
+	position: absolute;
+	left: 0;
+}
+
+
+a,
+button,
+.link,
+.nav-link {
+	cursor: pointer;
+}
+
+.btn-transparent {
+	border: 0;
+	background: 0;
+}
+
+.btn-icon {
+	font-size: 1.5rem;
+	width: 100%;
+}
+#phone-wrapper {
+	margin: 50px auto;
+	background: url("https://cdn.pixabay.com/photo/2017/06/17/10/39/cell-phone-2411808_960_720.png") 0 0;
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+	width: 363px;
+	height: 720px;
+	position: relative;
+	overflow: hidden;
+}
+
+#app {
+	background: #ffffff;
+	background-image: url("https://www.transparenttextures.com/patterns/asfalt-light.png");
+	position: relative;
+	top: 47px;
+	left: 19px;
+	height: 608px;
+	width: 325px;
+	display: grid;
+	grid-template-rows: 50px 1fr auto;
+}
+
+
+/********************/
+
+/*** Main chat UI ***/
+
+/********************/
+
+#header,
+#form {
+	display: grid;
+	grid-template-columns: 50px auto 50px;
+	align-items: center;
+}
+
+#header {
+	padding: 6px;
+}
+
+/* Custom Scrollbar */
+
+::-webkit-scrollbar {
+	width: 5px;
+}
+
+::-webkit-scrollbar-track {
+	box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+	border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+	background: hsl(231, 50%, 50%, 10%);
+	border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: #b30000;
+}
+
+/***************/
+
+/*** Credits ***/
+
+/***************/
+
+.credits {
+	text-align: center;
+	font-size: small;
+	color: #b2b2b2;
+}
+
+.credits a {
+	color: inherit;
 }
