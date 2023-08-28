@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-max-depth */
 import React from 'react';
-import Navbar from '../components/Navbar';
+import Navbar from './components/Navbar';
+import MessageBoard from './components/MessageBoard';
 
 export default function Chatbot() {
   return (
@@ -9,8 +10,7 @@ export default function Chatbot() {
       <div id="app">
 
         <Navbar />
-
-        <div id="message-board" />
+        <MessageBoard />
         <div id="form" className="bg-light">
           <div
             id="message"

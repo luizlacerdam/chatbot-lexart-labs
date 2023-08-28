@@ -189,3 +189,112 @@ button,
 	background: #b30000;
 }
 
+/*** Start Chat overlay ***/
+
+div#landing {
+	position: absolute;
+	z-index: 1;
+	width: 100%;
+	height: 100%;
+	box-sizing: border-box;
+	padding: 15px;
+	display: grid;
+	grid-template-rows: 1fr 1fr 1fr;
+	text-align: center;
+}
+
+span.fas.fa-robot {
+	align-self: end;
+}
+
+input#username {
+	font-size: 1.1rem;
+	line-height: 2.5rem;
+	text-align: center;
+	border-radius: 5px;
+	border: solid 1px #00000087;
+	margin: 15px 0;
+	width: 100%;
+}
+
+form#form-start {
+	align-self: end;
+}
+
+#start-chat {
+	background: #FF9800;
+	border: none;
+	padding: 15px 30px;
+	font-size: 1.2rem;
+	color: #ffffff;
+	border-radius: 5px;
+	width: 100%;
+}
+
+/* Conversation */
+
+#message-board {
+	display: grid;
+	align-self: end;
+	grid-auto-rows: minmax(min-content, max-content);
+	padding: 5px 0;
+	box-sizing: border-box;
+	max-height: 100%;
+	overflow-x: hidden;
+	overflow-y: scroll;
+}
+
+.post {
+	position: relative;
+	margin: 4px 10px;
+	padding: 10px;
+	border-radius: 10px;
+	font-size: .9rem;
+	word-break: break-word;
+}
+
+.post-user {
+	color: white;
+	justify-self: right;
+	margin-right: 50px;
+	background: #0184FF;
+	/*border-top-left-radius: 0;*/
+}
+
+.post-bot {
+	color: black;
+	justify-self: left;
+	margin-left: 50px;
+	background: rgba(64, 83, 191, 0.1);
+	/*border-top-right-radius: 0;*/
+}
+
+.post:after {
+	content: '';
+	position: absolute;
+	right: -10px;
+	top: 10px;
+	width: 0;
+	height: 0;
+	border: 10px solid transparent;
+	border-top: 0;
+}
+
+.post-user:after {
+	left: -10px;
+	border-right-color: rgba(255, 152, 0, 0.1);
+	border-left: 0;
+}
+
+.post-bot:after {
+	right: -10px;
+	border-left-color: rgba(64, 83, 191, 0.1);
+	border-right: 0;
+}
+
+.timestamp {
+	font-size: .6em;
+	opacity: .4;
+	margin: 5px 0 -5px;
+	display: block;
+}

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import menuWhite from '../../assets/img/menu_white_36dp.svg';
-import menuClose from '../../assets/img/close_white_36dp.svg';
-import leftArrow from '../../assets/img/left_arrow_white.svg';
+import menuWhite from '../../../assets/img/menu_white_36dp.svg';
+import menuClose from '../../../assets/img/close_white_36dp.svg';
+import leftArrow from '../../../assets/img/left_arrow_white.svg';
 
 export default function Navbar() {
   const [menu, setMenu] = useState(false);
