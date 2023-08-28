@@ -48,7 +48,7 @@ export default function MessageBoard() {
         <span className="timestamp">20:56</span>
       </div>
       <div className="post post-bot">
-        Hello
+        Hi
         <span className="timestamp">20:56</span>
       </div>
     </div>

@@ -74,6 +74,9 @@ ul.nav {
 	left: 0;
 }
 
+.btn {
+	padding: 5px !important;
+}
 
 a,
 button,
@@ -130,8 +133,7 @@ button,
 
 /********************/
 
-#header,
-#form {
+#header {
 	display: grid;
 	grid-template-columns: 50px auto 50px;
 	align-items: center;
@@ -141,24 +143,26 @@ button,
 	padding: 6px;
 }
 
-
 #form {
 	padding: 6px;
 	/*min-height: 40px;*/
-	grid-template-rows: auto 1fr;
+	display: flex;
+	align-items: flex-end;
 }
 
 #message {
+	width: 125px;
 	padding: 5px;
 	font-size: 1rem;
 	min-height: 25px;
-	max-height: 25vh;
+	max-height: 10vh;
 	overflow: auto;
 	background: rgba(0, 0, 0, 0.05);
 	color: rgba(0, 0, 0, 0.29);
 	font-style: italic;
 	outline: none;
 	resize: none;
+	border-radius: 5px;
 }
 
 #form.focus {

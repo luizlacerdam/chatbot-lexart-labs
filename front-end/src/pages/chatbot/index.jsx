@@ -2,6 +2,7 @@
 import React from 'react';
 import Navbar from './components/Navbar';
 import MessageBoard from './components/MessageBoard';
+import Form from './components/Form';
 
 export default function Chatbot() {
   return (
@@ -11,17 +12,7 @@ export default function Chatbot() {
 
         <Navbar />
         <MessageBoard />
-        <div id="form" className="bg-light">
-          <div
-            id="message"
-            placeholder="Type your message here"
-            rows="1"
-            contentEditable
-          />
-          <div>
-            <button id="send" type="" className="btn-transparent btn-icon" />
-          </div>
-        </div>
+        <Form />
       </div>
 
     </div>
