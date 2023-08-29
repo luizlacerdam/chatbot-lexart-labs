@@ -1,3 +1,4 @@
+/* eslint-disable react-func/max-lines-per-function */
 import React, { useEffect, useState } from 'react';
 import propTypes from 'prop-types';
 import plusIcon from '../../../assets/img/plus_icon.svg';
@@ -76,6 +77,19 @@ export default function Form({ setMessages, messages, setStartChat }) {
             ],
           },
         ]);
+      }
+      if (content.includes('goodbye') && lastMessage.sender === 'user' && username) {
+        setMessages([
+          ...messages, {
+            sender: 'bot',
+            content: `Goodbye ${username}!`,
+            time: timeStamp(),
+          },
+        ]);
+        setTimeout(() => {
+          setStartChat(false);
+          setUsername('');
+        }, 3000);
       }
     }
   }

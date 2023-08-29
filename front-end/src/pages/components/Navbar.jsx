@@ -7,7 +7,6 @@ import leftArrow from '../../assets/img/left_arrow_white.svg';
 export default function Navbar() {
   const [menu, setMenu] = useState(false);
   const path = useResolvedPath();
-  console.log(path);
   return (
     <div id="header" className="bg-dark">
 
