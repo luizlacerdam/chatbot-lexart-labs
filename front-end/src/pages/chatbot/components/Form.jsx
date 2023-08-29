@@ -7,7 +7,7 @@ import microphoneIcon from '../../../assets/img/microphone_icon.svg';
 import sendIcon from '../../../assets/img/send_icon.svg';
 import timeStamp from '../utils/timeStamp';
 
-export default function Form({ setMessages, messages }) {
+export default function Form({ setMessages, messages, setStartChat }) {
   const [localMessage, setLocalMessage] = useState('');
 
   function chatBot() {
@@ -27,6 +27,7 @@ export default function Form({ setMessages, messages }) {
             time: timeStamp(),
           },
         ]);
+        setStartChat(true);
       }
     }
   }
@@ -101,4 +102,5 @@ export default function Form({ setMessages, messages }) {
 Form.propTypes = {
   setMessages: propTypes.func.isRequired,
   messages: propTypes.arrayOf(propTypes.objectOf).isRequired,
+  setStartChat: propTypes.func.isRequired,
 };

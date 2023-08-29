@@ -211,7 +211,7 @@ span.fas.fa-robot {
 	align-self: end;
 }
 
-input#username {
+input#username, #password {
 	font-size: 1.1rem;
 	line-height: 2.5rem;
 	text-align: center;
@@ -302,3 +302,4 @@ form#form-start {
 	margin: 5px 0 -5px;
 	display: block;
 }
+
