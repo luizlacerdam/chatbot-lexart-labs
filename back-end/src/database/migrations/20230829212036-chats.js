@@ -11,8 +11,8 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       username: { allowNull: false, type: Sequelize.STRING },
-      messages: { allowNull: false, type: Sequelize.STRING },
-      finished: { allowNull: false, type: Sequelize.STRING },
+      messages: { allowNull: false, type: Sequelize.TEXT },
+      finished: { allowNull: false, type: Sequelize.DATE },
          });
   },
 
