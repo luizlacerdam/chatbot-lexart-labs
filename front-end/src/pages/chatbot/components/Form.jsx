@@ -4,7 +4,7 @@ import plusIcon from '../../../assets/img/plus_icon.svg';
 import cameraIcon from '../../../assets/img/camera_icon.svg';
 import imgIcon from '../../../assets/img/img_icon.svg';
 import microphoneIcon from '../../../assets/img/microphone_icon.svg';
-import sendIcon from '../../../assets/img/send_icon.svg';
+import likeIcon from '../../../assets/img/like_icon.svg';
 import timeStamp from '../utils/timeStamp';
 import { getItem, setItem } from '../utils/localStorageHandling';
 
@@ -16,6 +16,18 @@ export default function Form({ setMessages, messages, setStartChat }) {
     setMessages(getItem('messages') || []);
     setUsername(getItem('username'));
   }, []);
+
+  useEffect(() => {
+    if (username) {
+      setMessages([
+        ...messages, {
+          sender: 'bot',
+          content: `Hello ${username}! How can I help you today?`,
+          time: timeStamp(),
+        },
+      ]);
+    }
+  }, [username]);
 
   function chatBot() {
     const size = messages.length;
@@ -36,7 +48,34 @@ export default function Form({ setMessages, messages, setStartChat }) {
         ]);
         setTimeout(() => {
           setStartChat(true);
-        }, 3500);
+        }, 3000);
+      }
+
+      if (content.includes('loan') && lastMessage.sender === 'user' && username) {
+        setMessages([
+          ...messages, {
+            sender: 'bot',
+            content: `Hello ${username}! Here some helpfull info about loans.`,
+            time: timeStamp(),
+            links: [
+              {
+                title: 'Do you wanto to apply for a loan?',
+                info: 'We have a variety of loans available for you!',
+                url: 'https://www.google.com.br',
+              },
+              {
+                title: 'Loan conditions',
+                info: 'Check the conditions for each loan',
+                url: 'https://www.google.com',
+              },
+              {
+                title: 'Help',
+                info: 'If you need help, please contact us',
+                url: 'https://www.google.com',
+              },
+            ],
+          },
+        ]);
       }
     }
   }
@@ -103,9 +142,8 @@ export default function Form({ setMessages, messages, setStartChat }) {
       />
       <button
         className="btn-transparent btn"
-        onClick={ handleMessege }
       >
-        <img src={ sendIcon } alt="send-icon" />
+        <img src={ likeIcon } alt="like-icon" />
       </button>
     </div>
   );

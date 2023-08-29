@@ -56,7 +56,7 @@ export default function Login({ setUsername, username, setStartChat }) {
 }
 
 Login.propTypes = {
-  setUsername: propTypes.string.isRequired,
+  setUsername: propTypes.func.isRequired,
   username: propTypes.string.isRequired,
   setStartChat: propTypes.func.isRequired,
 };
