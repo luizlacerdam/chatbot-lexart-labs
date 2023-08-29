@@ -11,15 +11,17 @@ export default function Form({ setMessages, messages }) {
 
   const handleMessege = () => {
     if (localMessage !== '') {
-      setMessages([...messages, localMessage]);
+      setMessages([
+        ...messages, {
+          sender: 'user',
+          content: localMessage },
+      ]);
       setLocalMessage('');
-      console.log(messages);
     }
   };
 
   const handleLocalMessage = ({ target }) => {
     setLocalMessage(target.value);
-    console.log(target.value);
   };
 
   const handleKeyDown = (event) => {
@@ -70,5 +72,5 @@ export default function Form({ setMessages, messages }) {
 
 Form.propTypes = {
   setMessages: propTypes.func.isRequired,
-  messages: propTypes.arrayOf(propTypes.string).isRequired,
+  messages: propTypes.arrayOf(propTypes.objectOf).isRequired,
 };

@@ -1,56 +1,24 @@
 import React from 'react';
+import propTypes from 'prop-types';
 
-export default function MessageBoard() {
+export default function MessageBoard({ messages }) {
   return (
     <div id="message-board">
-      <div className="post post-user">
-        Hello
-        <span className="timestamp">20:56</span>
-      </div>
-      <div className="post post-bot">
-        Hello
-        <span className="timestamp">20:56</span>
-      </div>
-      <div className="post post-user">
-        Hello
-        <span className="timestamp">20:56</span>
-      </div>
-      <div className="post post-bot">
-        Hello
-        <span className="timestamp">20:56</span>
-      </div>
-      <div className="post post-user">
-        Hello
-        <span className="timestamp">20:56</span>
-      </div>
-      <div className="post post-bot">
-        Hello
-        <span className="timestamp">20:56</span>
-      </div>
-      <div className="post post-user">
-        Hello
-        <span className="timestamp">20:56</span>
-      </div>
-      <div className="post post-bot">
-        Hello
-        <span className="timestamp">20:56</span>
-      </div>
-      <div className="post post-user">
-        Hello
-        <span className="timestamp">20:56</span>
-      </div>
-      <div className="post post-bot">
-        Hello
-        <span className="timestamp">20:56</span>
-      </div>
-      <div className="post post-user">
-        Hello
-        <span className="timestamp">20:56</span>
-      </div>
-      <div className="post post-bot">
-        Hi
-        <span className="timestamp">20:56</span>
-      </div>
+      {
+        messages.map((message, index) => (
+          <div
+            key={ index }
+            className={ message.sender === 'bot' ? 'post post-bot' : 'post post-user' }
+          >
+            { message.content }
+            <span className="timestamp">20:56</span>
+          </div>
+        ))
+      }
     </div>
   );
 }
+
+MessageBoard.propTypes = {
+  messages: propTypes.arrayOf(propTypes.objectOf).isRequired,
+};
