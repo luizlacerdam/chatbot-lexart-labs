@@ -8,6 +8,7 @@ import microphoneIcon from '../../../assets/img/microphone_icon.svg';
 import likeIcon from '../../../assets/img/like_icon.svg';
 import timeStamp from '../../../utils/timeStamp';
 import { getItem, setItem } from '../../../utils/localStorageHandling';
+import { requestPost } from '../../../utils/requests';
 
 export default function Form({ setMessages, messages, setStartChat }) {
   const [localMessage, setLocalMessage] = useState('');
@@ -30,6 +31,34 @@ export default function Form({ setMessages, messages, setStartChat }) {
     }
   }, [username]);
 
+  function getCurrentDateTime() {
+    const currentDate = new Date();
+    const year = currentDate.getFullYear();
+    const month = (currentDate.getMonth() + 1).toString().padStart(2, '0');
+    const day = currentDate.getDate().toString().padStart(2, '0');
+    const hours = currentDate.getHours().toString().padStart(2, '0');
+    const minutes = currentDate.getMinutes().toString().padStart(2, '0');
+    const seconds = currentDate.getSeconds().toString().padStart(2, '0');
+
+    const dateTime = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+    return dateTime;
+  }
+
+  async function saveChat() {
+    try {
+      const localMessages = localStorage.getItem('messages');
+      const data = {
+        username,
+        messages: localMessages,
+        finished: getCurrentDateTime(),
+      };
+      console.log(data);
+      const response = await requestPost('/', data);
+      return response;
+    } catch (error) {
+      console.log(error);
+    }
+  }
   function chatBot() {
     const size = messages.length;
     if (size > 0) {
@@ -86,10 +115,8 @@ export default function Form({ setMessages, messages, setStartChat }) {
             time: timeStamp(),
           },
         ]);
-        setTimeout(() => {
-          setStartChat(false);
-          setUsername('');
-        }, 3000);
+        setStartChat(false);
+        saveChat();
       }
     }
   }
