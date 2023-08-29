@@ -11,7 +11,7 @@ export default function MessageBoard({ messages }) {
             className={ message.sender === 'bot' ? 'post post-bot' : 'post post-user' }
           >
             { message.content }
-            <span className="timestamp">20:56</span>
+            <span className="timestamp">{message.time}</span>
           </div>
         ))
       }

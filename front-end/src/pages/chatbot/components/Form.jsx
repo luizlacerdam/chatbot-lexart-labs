@@ -9,12 +9,23 @@ import sendIcon from '../../../assets/img/send_icon.svg';
 export default function Form({ setMessages, messages }) {
   const [localMessage, setLocalMessage] = useState('');
 
+  function timeStamp() {
+    const ten = 10;
+    const timestamp = new Date();
+    const hours = timestamp.getHours();
+    let minutes = timestamp.getMinutes();
+    if (minutes < ten) minutes = `0${minutes}`;
+    return `${hours}:${minutes}`;
+  }
+
   const handleMessege = () => {
     if (localMessage !== '') {
       setMessages([
         ...messages, {
           sender: 'user',
-          content: localMessage },
+          content: localMessage,
+          time: timeStamp(),
+        },
       ]);
       setLocalMessage('');
     }
