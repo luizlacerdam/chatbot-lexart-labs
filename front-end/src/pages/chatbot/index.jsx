@@ -5,14 +5,22 @@ import MessageBoard from './components/MessageBoard';
 import Form from './components/Form';
 
 export default function Chatbot() {
+  const [messages, setMessages] = React.useState([]);
+
   return (
     <div id="phone-wrapper">
 
       <div id="app">
 
         <Navbar />
-        <MessageBoard />
-        <Form />
+        <MessageBoard
+          messages={ messages }
+          setMessages={ setMessages }
+        />
+        <Form
+          messages={ messages }
+          setMessages={ setMessages }
+        />
       </div>
 
     </div>
