@@ -6,6 +6,7 @@ import imgIcon from '../../../assets/img/img_icon.svg';
 import microphoneIcon from '../../../assets/img/microphone_icon.svg';
 import sendIcon from '../../../assets/img/send_icon.svg';
 import timeStamp from '../utils/timeStamp';
+import { setItem } from '../utils/localStorageHandling';
 
 export default function Form({ setMessages, messages, setStartChat }) {
   const [localMessage, setLocalMessage] = useState('');
@@ -27,6 +28,7 @@ export default function Form({ setMessages, messages, setStartChat }) {
             time: timeStamp(),
           },
         ]);
+        setItem('messages', messages);
         setStartChat(true);
       }
     }
