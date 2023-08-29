@@ -1,20 +1,26 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import propTypes from 'prop-types';
+import timeStamp from '../utils/timeStamp';
 
-export default function MessageBoard({ messages }) {
-  const [divStyle, setDivStyle] = React.useState({});
-  const toggleStyle = (key) => {
-    if (divStyle[key]) {
-      divStyle[key] = { display: 'none' };
-      setDivStyle({ ...divStyle,
-        div,
-      });
-    } else {
-      const newStyle = {};
-      newStyle[key] = { display: 'block' };
-      setDivStyle({ ...divStyle,
-        ...newStyle });
-    }
+export default function MessageBoard({ messages, setMessages }) {
+  const messagesEndRef = useRef(null);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
+
+  const handleInfo = (key, message) => {
+    setMessages([
+      ...messages, {
+        sender: 'bot',
+        content: message.links[key].info,
+        time: timeStamp(),
+      },
+    ]);
   };
 
   return (
@@ -31,16 +37,14 @@ export default function MessageBoard({ messages }) {
               message.links.map((link, i) => (
                 <div key={ i }>
                   <button
-                    onClick={ () => toggleStyle(i) }
+                    onClick={ () => handleInfo(i, message) }
                   >
 
                     {link.title}
                   </button>
-                  <span
-                    style={ divStyle[i] || { display: 'none' } }
-                  >
+                  {/* <span>
                     {link.info}
-                  </span>
+                  </span> */}
 
                   {/* {link.url} */}
                 </div>
@@ -51,10 +55,12 @@ export default function MessageBoard({ messages }) {
           </div>
         ))
       }
+      <div ref={ messagesEndRef } />
     </div>
   );
 }
 
 MessageBoard.propTypes = {
   messages: propTypes.arrayOf(propTypes.objectOf).isRequired,
+  setMessages: propTypes.func.isRequired,
 };
