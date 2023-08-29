@@ -6,10 +6,16 @@ import imgIcon from '../../../assets/img/img_icon.svg';
 import microphoneIcon from '../../../assets/img/microphone_icon.svg';
 import sendIcon from '../../../assets/img/send_icon.svg';
 import timeStamp from '../utils/timeStamp';
-import { setItem } from '../utils/localStorageHandling';
+import { getItem, setItem } from '../utils/localStorageHandling';
 
 export default function Form({ setMessages, messages, setStartChat }) {
   const [localMessage, setLocalMessage] = useState('');
+  const [username, setUsername] = useState();
+
+  useEffect(() => {
+    setMessages(getItem('messages') || []);
+    setUsername(getItem('username'));
+  }, []);
 
   function chatBot() {
     const size = messages.length;
@@ -19,22 +25,26 @@ export default function Form({ setMessages, messages, setStartChat }) {
       const initiateTerms = ['hello', 'goodbye', 'good', 'i want'];
 
       if (initiateTerms.some(
-        (term) => content.includes(term) && lastMessage.sender === 'user',
+        (term) => content.includes(term) && lastMessage.sender === 'user' && !username,
       )) {
         setMessages([
           ...messages, {
             sender: 'bot',
-            content: 'Hello!',
+            content: 'Hello, my name is Optus. Please log in so I can assist you today!',
             time: timeStamp(),
           },
         ]);
-        setItem('messages', messages);
-        setStartChat(true);
+        setTimeout(() => {
+          setStartChat(true);
+        }, 3500);
       }
     }
   }
 
   useEffect(() => {
+    if (messages.length > 0) {
+      setItem('messages', messages);
+    }
     chatBot();
   }, [messages]);
 

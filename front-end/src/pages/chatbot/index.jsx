@@ -28,6 +28,7 @@ export default function Chatbot() {
           messages={ messages }
           setMessages={ setMessages }
           setStartChat={ setStartChat }
+          username={ username }
         />
       </div>
 
