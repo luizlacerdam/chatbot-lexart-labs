@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useResolvedPath } from 'react-router-dom';
 import menuWhite from '../../assets/img/menu_white_36dp.svg';
 import menuClose from '../../assets/img/close_white_36dp.svg';
 import leftArrow from '../../assets/img/left_arrow_white.svg';
 
 export default function Navbar() {
   const [menu, setMenu] = useState(false);
-  const navigation = useNavigate();
+  const path = useResolvedPath();
+  console.log(path);
   return (
     <div id="header" className="bg-dark">
 
@@ -37,9 +38,17 @@ export default function Navbar() {
           style={ !menu ? { display: 'none' } : { display: 'block' } }
         >
           <ul className="nav">
-            <li id="chats" className="nav-link">
-              <Link to="/chats">Chats</Link>
-            </li>
+            { path.pathname !== '/chats' && (
+              <li id="chats" className="nav-link">
+                <Link to="/chats">Chats</Link>
+              </li>
+            )}
+            { path.pathname !== '/' && (
+              <li id="chatbot" className="nav-link">
+                <Link to="/">Chatbot</Link>
+              </li>
+            )}
+
             <hr />
             <li id="sign-out" className="nav-link">
 
