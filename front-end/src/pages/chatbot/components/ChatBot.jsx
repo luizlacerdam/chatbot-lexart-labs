@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import propTypes from 'prop-types';
-import timeStamp from '../utils/timeStamp';
+import timeStamp from '../../../utils/timeStamp';
 
 export default function Chatbot({ setMessages, messages }) {
   function searchTerms() {

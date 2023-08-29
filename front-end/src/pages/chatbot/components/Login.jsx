@@ -1,6 +1,6 @@
 import React from 'react';
 import propTypes from 'prop-types';
-import { setItem } from '../utils/localStorageHandling';
+import { setItem } from '../../../utils/localStorageHandling';
 
 export default function Login({ setUsername, username, setStartChat }) {
   const [password, setPassword] = React.useState('');

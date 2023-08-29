@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-max-depth */
 import React from 'react';
-import Navbar from './components/Navbar';
+import Navbar from '../components/Navbar';
 import MessageBoard from './components/MessageBoard';
 import Form from './components/Form';
 import Login from './components/Login';

@@ -5,8 +5,8 @@ import cameraIcon from '../../../assets/img/camera_icon.svg';
 import imgIcon from '../../../assets/img/img_icon.svg';
 import microphoneIcon from '../../../assets/img/microphone_icon.svg';
 import likeIcon from '../../../assets/img/like_icon.svg';
-import timeStamp from '../utils/timeStamp';
-import { getItem, setItem } from '../utils/localStorageHandling';
+import timeStamp from '../../../utils/timeStamp';
+import { getItem, setItem } from '../../../utils/localStorageHandling';
 
 export default function Form({ setMessages, messages, setStartChat }) {
   const [localMessage, setLocalMessage] = useState('');
@@ -57,7 +57,7 @@ export default function Form({ setMessages, messages, setStartChat }) {
             sender: 'bot',
             content: `Hello ${username}! Here some helpfull info about loans.`,
             time: timeStamp(),
-            links: [
+            infos: [
               {
                 title: 'Do you wanto to apply for a loan?',
                 info: 'We have a variety of loans available for you!',
@@ -65,12 +65,12 @@ export default function Form({ setMessages, messages, setStartChat }) {
               },
               {
                 title: 'Loan conditions',
-                info: 'Check the conditions for each loan',
+                info: 'Check the conditions for each loan.',
                 url: 'https://www.google.com',
               },
               {
                 title: 'Help',
-                info: 'If you need help, please contact us',
+                info: 'If you need help, please contact us.',
                 url: 'https://www.google.com',
               },
             ],

@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import propTypes from 'prop-types';
-import timeStamp from '../utils/timeStamp';
+import timeStamp from '../../../utils/timeStamp';
 
 export default function MessageBoard({ messages, setMessages }) {
   const messagesEndRef = useRef(null);
@@ -13,14 +13,15 @@ export default function MessageBoard({ messages, setMessages }) {
     scrollToBottom();
   }, [messages]);
 
-  const handleInfo = (key, message) => {
+  const handleLinks = (key, message) => {
     setMessages([
       ...messages, {
         sender: 'bot',
-        content: message.links[key].info,
+        content: message.infos[key].info,
         time: timeStamp(),
       },
     ]);
+    // falta mandar o link para o usuario
   };
 
   return (
@@ -33,20 +34,16 @@ export default function MessageBoard({ messages, setMessages }) {
           >
             { message.content }
             <span className="timestamp">{message.time}</span>
-            { message.sender === 'bot' && message.links ? (
-              message.links.map((link, i) => (
+            { message.sender === 'bot' && message.infos ? (
+              message.infos.map((info, i) => (
                 <div key={ i }>
                   <button
-                    onClick={ () => handleInfo(i, message) }
+                    className="link-button"
+                    onClick={ () => handleLinks(i, message) }
                   >
-
-                    {link.title}
+                    {info.title}
                   </button>
-                  {/* <span>
-                    {link.info}
-                  </span> */}
 
-                  {/* {link.url} */}
                 </div>
 
               ))
