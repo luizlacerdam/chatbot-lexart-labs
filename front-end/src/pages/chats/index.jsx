@@ -78,7 +78,6 @@ export default function Chats() {
                       <p>
                         {`User #${chat.id}
                          - ${chat.username} - ${formatDate(chat.finished)} `}
-
                       </p>
                     </div>
                   </div>
