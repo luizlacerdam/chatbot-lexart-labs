@@ -117,6 +117,8 @@ export default function Form({ setMessages, messages, setStartChat }) {
         ]);
         setStartChat(false);
         saveChat();
+        setMessages([]);
+        localStorage.clear();
       }
     }
   }

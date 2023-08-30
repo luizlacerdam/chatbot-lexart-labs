@@ -314,3 +314,22 @@ form#form-start {
 	display: block;
 }
 
+#lex-art-labs-logo {
+	width: 200px;
+}
+
+#home-page {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	
+}
+
+#chat-bot-icon {
+	align-self: flex-end;
+	position: absolute;
+	bottom: 20px;
+	right: 20px;
+}
+
