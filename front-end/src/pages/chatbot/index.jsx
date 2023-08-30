@@ -9,6 +9,7 @@ export default function Chatbot() {
   const [messages, setMessages] = React.useState([]);
   const [username, setUsername] = React.useState('');
   const [startChat, setStartChat] = React.useState(false);
+
   return (
     <div id="phone-wrapper">
 
@@ -18,6 +19,7 @@ export default function Chatbot() {
             username={ username }
             setUsername={ setUsername }
             setStartChat={ setStartChat }
+            startChat={ startChat }
           />) }
         <Navbar />
         <MessageBoard

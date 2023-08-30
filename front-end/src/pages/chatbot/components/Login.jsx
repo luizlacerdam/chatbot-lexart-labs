@@ -2,7 +2,7 @@ import React from 'react';
 import propTypes from 'prop-types';
 import { setItem } from '../../../utils/localStorageHandling';
 
-export default function Login({ setUsername, username, setStartChat }) {
+export default function Login({ setUsername, username, setStartChat, startChat }) {
   const [password, setPassword] = React.useState('');
 
   function handleInput({ target }) {
@@ -14,7 +14,7 @@ export default function Login({ setUsername, username, setStartChat }) {
   }
 
   const handleStartChat = () => {
-    setStartChat(true);
+    setStartChat(!startChat);
     setItem('username', username);
   };
   return (
@@ -24,7 +24,7 @@ export default function Login({ setUsername, username, setStartChat }) {
         <h1 className="mt-3">ChatBot</h1>
         <h3>Please log in to chat</h3>
       </div>
-      <form id="form-start">
+      <div id="form-start">
         <input
           type="text"
           name="username"
@@ -50,7 +50,7 @@ export default function Login({ setUsername, username, setStartChat }) {
           Login
 
         </button>
-      </form>
+      </div>
     </div>
   );
 }
@@ -59,4 +59,5 @@ Login.propTypes = {
   setUsername: propTypes.func.isRequired,
   username: propTypes.string.isRequired,
   setStartChat: propTypes.func.isRequired,
+  startChat: propTypes.bool.isRequired,
 };

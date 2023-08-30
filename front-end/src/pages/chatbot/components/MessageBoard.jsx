@@ -18,7 +18,6 @@ export default function MessageBoard({ messages, setMessages }) {
       ...prevState, {
         sender: 'bot',
         content: message.infos[key].info,
-        type: 'url',
         time: timeStamp(),
 
       },
@@ -27,6 +26,7 @@ export default function MessageBoard({ messages, setMessages }) {
       ...prevState, {
         sender: 'bot',
         content: message.infos[key].url,
+        type: 'url',
         time: timeStamp(),
       },
     ]));
@@ -40,8 +40,15 @@ export default function MessageBoard({ messages, setMessages }) {
             key={ index }
             className={ `post post-${message.sender}` }
           >
-            { message.content }
-            <span className="timestamp">{message.time}</span>
+            {!message.type ? (
+              <>
+                <span>
+                  {message.content}
+                </span>
+                <span className="timestamp">{message.time}</span>
+              </>
+            ) : null}
+
             { message.sender === 'bot' && message.infos ? (
               message.infos.map((info, i) => (
                 <div key={ i }>
@@ -56,6 +63,15 @@ export default function MessageBoard({ messages, setMessages }) {
 
               ))
             ) : null }
+
+            { message.sender === 'bot' && message.type === 'url' ? (
+              <a
+                href={ message.content }
+              >
+
+                {message.content}
+              </a>
+            ) : null}
 
           </div>
         ))
