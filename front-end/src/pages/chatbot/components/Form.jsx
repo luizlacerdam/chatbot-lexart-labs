@@ -52,7 +52,6 @@ export default function Form({ setMessages, messages, setStartChat }) {
         messages: localMessages,
         finished: getCurrentDateTime(),
       };
-      console.log(data);
       const response = await requestPost('/', data);
       return response;
     } catch (error) {
@@ -111,14 +110,17 @@ export default function Form({ setMessages, messages, setStartChat }) {
         setMessages([
           ...messages, {
             sender: 'bot',
-            content: `Goodbye ${username}!`,
+            content: `Goodbye ${username}! You can always come back to chat with me!`,
             time: timeStamp(),
           },
         ]);
-        setStartChat(false);
-        saveChat();
-        setMessages([]);
-        localStorage.clear();
+
+        setTimeout(() => {
+          setStartChat(false);
+          saveChat();
+          setMessages([]);
+          localStorage.clear();
+        }, 5000);
       }
     }
   }

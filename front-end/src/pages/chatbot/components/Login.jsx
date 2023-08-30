@@ -21,7 +21,7 @@ export default function Login({ setUsername, username, setStartChat }) {
     <div id="landing" className="bg-dark text-light">
       <span className="fas fa-robot fa-4x" />
       <div>
-        <h1 className="mt-3">Optus</h1>
+        <h1 className="mt-3">ChatBot</h1>
         <h3>Please log in to chat</h3>
       </div>
       <form id="form-start">

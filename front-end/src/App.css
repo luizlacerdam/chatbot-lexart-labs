@@ -58,6 +58,7 @@ ul.nav {
 	list-style: none;
 	margin: 0;
 	padding: 0;
+	width: 100px;
 }
 
 .nav-link {
@@ -333,3 +334,29 @@ form#form-start {
 	right: 20px;
 }
 
+#app h1 {
+	margin-left: 10px;
+}
+
+#chats-page {
+	overflow: auto;
+}
+
+#chats-page h3 {
+	margin-left: 10px;
+}
+
+#chats {
+	width: 325px;
+}
+
+.chat-info p {
+	background-color: #0085ff;
+	color: white;
+	border-radius: 5px;
+	width: 275px;
+	font-size: 14px;
+	padding: 10px;
+	font-weight: bold;
+	margin-left: 10px;
+}

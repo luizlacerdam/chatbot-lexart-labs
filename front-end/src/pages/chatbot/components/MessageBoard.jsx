@@ -13,15 +13,23 @@ export default function MessageBoard({ messages, setMessages }) {
     scrollToBottom();
   }, [messages]);
 
-  const handleLinks = (key, message) => {
-    setMessages([
-      ...messages, {
+  const handleInfos = (key, message) => {
+    setMessages((prevState) => ([
+      ...prevState, {
         sender: 'bot',
         content: message.infos[key].info,
+        type: 'url',
+        time: timeStamp(),
+
+      },
+    ]));
+    setMessages((prevState) => ([
+      ...prevState, {
+        sender: 'bot',
+        content: message.infos[key].url,
         time: timeStamp(),
       },
-    ]);
-    // falta mandar o link para o usuario
+    ]));
   };
 
   return (
@@ -39,7 +47,7 @@ export default function MessageBoard({ messages, setMessages }) {
                 <div key={ i }>
                   <button
                     className="link-button"
-                    onClick={ () => handleLinks(i, message) }
+                    onClick={ () => handleInfos(i, message) }
                   >
                     {info.title}
                   </button>
