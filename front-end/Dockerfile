@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1.4
 
 # 1. For build React app
-FROM node:lts AS development
+FROM node:lts AS build
 
 # Set working directory
 WORKDIR /app
@@ -15,11 +15,10 @@ RUN npm ci
 
 COPY . /app
 
+RUN npm run build
+
 # 2. For Nginx setup
 FROM nginx:alpine
-
-# Copy config nginx
-COPY --from=build /app/.nginx/nginx.conf /etc/nginx/conf.d/default.conf
 
 WORKDIR /usr/share/nginx/html
 
