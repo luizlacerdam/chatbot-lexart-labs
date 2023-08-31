@@ -1,7 +1,10 @@
 import axios from 'axios';
 
+const HOST = import.meta.env.VITE_HOST;
+const PROTOCOL = import.meta.env.VITE_PROTOCOL;
+
 const api = axios.create({
-  baseURL: 'http://localhost:3001',
+  baseURL: `${PROTOCOL}://${HOST}`,
 });
 
 export const setToken = (token) => {
