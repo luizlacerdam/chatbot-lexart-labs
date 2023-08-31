@@ -20,6 +20,8 @@ export default function Chatbot() {
             setUsername={ setUsername }
             setStartChat={ setStartChat }
             startChat={ startChat }
+            setMessages={ setMessages }
+            messages={ messages }
           />) }
         <Navbar />
         <MessageBoard

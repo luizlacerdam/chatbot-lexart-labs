@@ -5,14 +5,12 @@ import { requestData } from '../../utils/requests';
 
 export default function Chats() {
   const [chats, setChats] = React.useState([]);
-  const [filteredChats, setFilteredChats] = React.useState([]);
   const [isLoaded, setIsLoaded] = React.useState(false);
 
   const getAllChats = async () => {
     try {
       const response = await requestData('/');
       setChats(response.allChats);
-      console.log(response.allChats);
       setIsLoaded(true);
     } catch (error) {
       console.log(error);

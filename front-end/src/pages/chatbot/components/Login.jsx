@@ -1,8 +1,11 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import { setItem } from '../../../utils/localStorageHandling';
+import timeStamp from '../../../utils/timeStamp';
 
-export default function Login({ setUsername, username, setStartChat, startChat }) {
+export default function Login({ setUsername,
+  username, setStartChat, startChat, messages,
+  setMessages }) {
   const [password, setPassword] = React.useState('');
 
   function handleInput({ target }) {
@@ -16,6 +19,13 @@ export default function Login({ setUsername, username, setStartChat, startChat }
   const handleStartChat = () => {
     setStartChat(!startChat);
     setItem('username', username);
+    setMessages([
+      ...messages, {
+        sender: 'bot',
+        content: `Thank you for ${username}! Type "loans" to see our loan options.`,
+        time: timeStamp(),
+      },
+    ]);
   };
   return (
     <div id="landing" className="bg-dark text-light">
@@ -56,6 +66,8 @@ export default function Login({ setUsername, username, setStartChat, startChat }
 }
 
 Login.propTypes = {
+  setMessages: propTypes.func.isRequired,
+  messages: propTypes.arrayOf(propTypes.objectOf).isRequired,
   setUsername: propTypes.func.isRequired,
   username: propTypes.string.isRequired,
   setStartChat: propTypes.func.isRequired,

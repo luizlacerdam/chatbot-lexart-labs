@@ -46,9 +46,10 @@ export default function Form({ setMessages, messages, setStartChat }) {
 
   async function saveChat() {
     try {
+      const localUsername = localStorage.getItem('username');
       const localMessages = localStorage.getItem('messages');
       const data = {
-        username,
+        username: localUsername,
         messages: localMessages,
         finished: getCurrentDateTime(),
       };
@@ -58,7 +59,8 @@ export default function Form({ setMessages, messages, setStartChat }) {
       console.log(error);
     }
   }
-  function chatBot() {
+  async function chatBot() {
+    const localUsername = getItem('username');
     const size = messages.length;
     if (size > 0) {
       const lastMessage = messages[size - 1];
@@ -66,12 +68,13 @@ export default function Form({ setMessages, messages, setStartChat }) {
       const initiateTerms = ['hello', 'goodbye', 'good', 'i want'];
 
       if (initiateTerms.some(
-        (term) => content.includes(term) && lastMessage.sender === 'user' && !username,
+        (term) => content.includes(term) && lastMessage.sender === 'user'
+        && !localUsername,
       )) {
         setMessages([
           ...messages, {
             sender: 'bot',
-            content: 'Hello, my name is Optus. Please log in so I can assist you today!',
+            content: 'Hello, my name is Optus. Redirecting you to our login page.',
             time: timeStamp(),
           },
         ]);
@@ -80,44 +83,46 @@ export default function Form({ setMessages, messages, setStartChat }) {
         }, 3000);
       }
 
-      if (content.includes('loan') && lastMessage.sender === 'user' && username) {
+      if (content.includes('loan') && lastMessage.sender === 'user' && localUsername) {
         setMessages([
           ...messages, {
             sender: 'bot',
-            content: `Hello ${username}! Here some helpfull info about loans.`,
+            content: `Hello ${localUsername}! Here some helpfull info about loans.`,
             time: timeStamp(),
             infos: [
               {
                 title: 'Do you wanto to apply for a loan?',
                 info: 'We have a variety of loans available for you!',
-                url: 'https://www.google.com.br',
+                url: 'https://www.applyforloan.com',
               },
               {
                 title: 'Loan conditions',
                 info: 'Check the conditions for each loan.',
-                url: 'https://www.google.com',
+                url: 'https://www.checkconditionsloans.com',
               },
               {
                 title: 'Help',
                 info: 'If you need help, please contact us.',
-                url: 'https://www.google.com',
+                url: 'https://www.getloanshelphere.com',
               },
             ],
           },
         ]);
       }
-      if (content.includes('goodbye') && lastMessage.sender === 'user' && username) {
+      if (content.includes('goodbye') && lastMessage.sender === 'user' && localUsername) {
         setMessages([
           ...messages, {
             sender: 'bot',
-            content: `Goodbye ${username}! You can always come back to chat with me!`,
+            content: `Goodbye ${localUsername}! 
+            You can always come back to chat with me!`,
             time: timeStamp(),
           },
         ]);
 
+        saveChat();
+
         setTimeout(() => {
           setStartChat(false);
-          saveChat();
           setMessages([]);
           localStorage.clear();
         }, 5000);
