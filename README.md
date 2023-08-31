@@ -86,3 +86,7 @@ function App() {
 - When the user enters the term "Goodbye", the conversation is finished and stored in a database.
 - There is a page to export the historic conversations in CSV order by date.
 
+
+## Demo
+![exemple chatbot](./lexartlabs-chatbot.gif)
+
