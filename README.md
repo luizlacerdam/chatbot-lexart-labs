@@ -65,18 +65,6 @@ Start front-end
 ```
 
 
-
-## Usage/Examples
-
-```javascript
-import Component from 'my-project'
-
-function App() {
-  return <Component />
-}
-```
-
-
 ## Features
 
 - It can interpret the terms: "Hello", "Goodbye", "Good", "I want" to initiate a conversation thread with the user.
